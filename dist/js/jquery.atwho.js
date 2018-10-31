@@ -107,7 +107,7 @@ DEFAULT_CALLBACKS = {
     if (!query) {
       return li;
     }
-    regexp = new RegExp(">\\s*([^\<]*?)(" + query.replace("+", "\\+") + ")([^\<]*)\\s*<", 'ig');
+    regexp = new RegExp(">\\s*([^\<]*?)(" + query.replace("+", "\\+").replace(".", "\\.") + ")([^\<]*)\\s*<", 'ig');
     return li.replace(regexp, function(str, $1, $2, $3) {
       return '> ' + $1 + '<strong>' + $2 + '</strong>' + $3 + ' <';
     });
@@ -1207,7 +1207,8 @@ $.fn.atwho["default"] = {
   editableAtwhoQueryAttrs: {},
   scrollDuration: 150,
   suspendOnComposing: true,
-  lookUpOnClick: true
+  lookUpOnClick: true,
+  stopPropagationOnEnter: false
 };
 
 $.fn.atwho.debug = false;
