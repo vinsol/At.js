@@ -359,6 +359,9 @@ App = (function() {
         if (view.highlighted()) {
           e.preventDefault();
           view.choose(e);
+          if (this.controller().getOpt('stopPropagationOnEnter') && e.keyCode === KEY_CODE.ENTER) {
+            e.stopPropagation();
+          }
         } else {
           view.hide(e);
         }
